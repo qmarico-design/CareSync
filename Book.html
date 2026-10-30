@@ -172,12 +172,12 @@
                 'sb_publishable_UrExMosH6ieQZ0K1omjGaA_eYRi7dmz'
             );
             const { data: { session } } = await guardClient.auth.getSession();
-            if (!session) { location.replace('../Login.html'); return; }
+            if (!session) { location.replace('Login.html'); return; }
 
             const { data: profile, error } = await guardClient.from('profiles')
                 .select('role').eq('id', session.user.id).single();
             if (error || !profile || profile.role !== 'admin') {
-                location.replace('../CareSync.html');
+                location.replace('CareSync.html');
                 return;
             }
             document.body.style.visibility = 'visible';

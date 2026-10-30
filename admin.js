@@ -9,8 +9,8 @@ const db = supabase.createClient(
     'https://njgozrsxoaepylosccup.supabase.co',
     'sb_publishable_UrExMosH6ieQZ0K1omjGaA_eYRi7dmz'
 );
-const LOGIN_PAGE = '../Login.html';
-const USER_PAGE = '../CareSync.html';
+const LOGIN_PAGE = 'Login.html';
+const USER_PAGE = 'CareSync.html';
 
 let appointments = [];
 let loadError = '';

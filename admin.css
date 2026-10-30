@@ -54,7 +54,6 @@ body {
     box-shadow: 0 8px 22px rgba(93, 91, 91, 0.35);
 }
 
-/* Logout button (top right) */
 #logoutBtn {
     position: absolute;
     top: 18px;

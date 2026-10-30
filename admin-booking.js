@@ -13,10 +13,7 @@ const doctors = {
 };
 
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-// Admin side: no login. persistSession:false keeps any patient session out of this page.
-const db = supabase.createClient('https://njgozrsxoaepylosccup.supabase.co', 'sb_publishable_UrExMosH6ieQZ0K1omjGaA_eYRi7dmz', {
-    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
-});
+const db = supabase.createClient('https://njgozrsxoaepylosccup.supabase.co', 'sb_publishable_UrExMosH6ieQZ0K1omjGaA_eYRi7dmz');
 let takenTimes = new Set();
 let slotRequest = 0;
 

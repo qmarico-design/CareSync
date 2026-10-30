@@ -326,7 +326,7 @@ function makeReference(date) {
 form.addEventListener('submit', async e => {
     e.preventDefault();
     if (!validate()) return;
-    if (!currentUser) { window.location.href = 'Login.html'; return; }
+    if (!currentUser) { window.location.href = 'login.html'; return; }
 
     const btn = $('confirmBtn');
     btn.disabled = true;
@@ -457,7 +457,7 @@ $('bookAnother').addEventListener('click', () => {
 // Bookings are tied to an account, so the visitor must be logged in.
 (async function requireLogin() {
     const { data } = await db.auth.getSession();
-    if (!data.session) { window.location.href = 'Login.html'; return; }
+    if (!data.session) { window.location.href = 'login.html'; return; }
     currentUser = data.session.user;
 
     if (!fields.email.value) fields.email.value = currentUser.email || '';

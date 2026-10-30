@@ -9,8 +9,8 @@ const db = supabase.createClient(
     'https://njgozrsxoaepylosccup.supabase.co',
     'sb_publishable_UrExMosH6ieQZ0K1omjGaA_eYRi7dmz'
 );
-const LOGIN_PAGE = 'Login.html';
-const USER_PAGE = 'CareSync.html';
+const LOGIN_PAGE = 'login.html';
+const USER_PAGE = 'caresync.html';
 
 let appointments = [];
 let loadError = '';
@@ -107,7 +107,7 @@ function stateOf(a) {
     return 'upcoming';
 }
 
-// Completed appointments never show here. They live in Records.html.
+// Completed appointments never show here. They live in records.html.
 function matches(a, filter) {
     const state = stateOf(a);
     if (state === 'completed') return false;
@@ -237,7 +237,7 @@ listBox.addEventListener('click', async e => {
         const { error } = await db.from('appointments')
             .update({ status: 'Completed', completed_at: new Date().toISOString() }).eq('ref', ref);
         if (error) { alert('Could not mark the appointment as completed. Please try again.'); return; }
-        window.location.href = 'Records.html?ref=' + encodeURIComponent(ref);
+        window.location.href = 'records.html?ref=' + encodeURIComponent(ref);
         return;
     }
 
@@ -318,7 +318,7 @@ async function guard() {
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
     await db.auth.signOut();
-    location.replace(LOGIN_PAGE);
+    location.replace('index.html');
 });
 
 (async function start() {

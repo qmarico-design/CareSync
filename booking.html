@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book an Appointment | CareSync Community Clinic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="booking.css">
+</head>
+
+<body>
+
+    <header class="top">
+        <a class="back" href="CareSync.html">Back to Home</a>
+        <h1>Book an Appointment</h1>
+        <p>Choose your doctor, pick a time, and we will save your slot.</p>
+    </header>
+
+    <main class="layout" id="bookingView">
+
+        <form id="bookingForm" novalidate>
+
+            <fieldset class="card">
+                <legend><span class="num">1</span>Patient details</legend>
+
+                <div class="choice-row" role="radiogroup" aria-label="Who is this appointment for">
+                    <label class="choice"><input type="radio" name="forWho" value="myself" checked><span>For myself</span></label>
+                    <label class="choice"><input type="radio" name="forWho" value="someone else"><span>For someone else</span></label>
+                </div>
+
+                <div class="grid">
+                    <div class="field">
+                        <label for="fullName" id="fullNameLabel">Full name</label>
+                        <input type="text" id="fullName" autocomplete="name" placeholder="Juan Dela Cruz">
+                        <span class="error" id="fullName-error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="birthdate" id="birthdateLabel">Birthdate</label>
+                        <input type="date" id="birthdate">
+                        <span class="error" id="birthdate-error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Contact number</label>
+                        <input type="tel" id="phone" autocomplete="tel" placeholder="0917 123 4567">
+                        <span class="error" id="phone-error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" autocomplete="email" placeholder="name@email.com">
+                        <span class="error" id="email-error"></span>
+                    </div>
+                </div>
+
+                <div class="choice-row" role="radiogroup" aria-label="Patient type">
+                    <label class="choice"><input type="radio" name="patientType" value="New patient" checked><span>New patient</span></label>
+                    <label class="choice"><input type="radio" name="patientType" value="Returning patient"><span>Returning patient</span></label>
+                </div>
+            </fieldset>
+
+            <fieldset class="card">
+                <legend><span class="num">2</span>Appointment details</legend>
+
+                <div class="grid">
+                    <div class="field">
+                        <label for="department">Department</label>
+                        <select id="department">
+                            <option value="">Choose a department</option>
+                        </select>
+                        <span class="error" id="department-error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="doctor">Doctor</label>
+                        <select id="doctor" disabled>
+                            <option value="">Choose a department first</option>
+                        </select>
+                        <span class="hint" id="doctorHint"></span>
+                        <span class="error" id="doctor-error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="reason">Reason for visit</label>
+                        <select id="reason">
+                            <option value="">Choose a reason</option>
+                            <option>Check-up</option>
+                            <option>Follow-up visit</option>
+                            <option>Laboratory request</option>
+                            <option>Vaccination</option>
+                            <option>Consultation for a new concern</option>
+                            <option>Other</option>
+                        </select>
+                        <span class="error" id="reason-error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="notes">Notes for the doctor (optional)</label>
+                        <textarea id="notes" rows="3" maxlength="300" placeholder="Symptoms, allergies, or anything we should know"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="card">
+                <legend><span class="num">3</span>Date and time</legend>
+
+                <div class="field date-field">
+                    <label for="date">Appointment date</label>
+                    <input type="date" id="date">
+                    <span class="error" id="date-error"></span>
+                </div>
+
+                <div id="slotMessage" class="slot-message">Choose a doctor and a date to see available times.</div>
+                <div id="slots" class="slots" role="radiogroup" aria-label="Available times"></div>
+                <span class="error" id="time-error"></span>
+
+                <div class="legend" id="slotLegend" hidden>
+                    <span><i class="dot open"></i>Available</span>
+                    <span><i class="dot taken"></i>Not available</span>
+                </div>
+            </fieldset>
+
+        </form>
+
+        <aside class="summary" aria-labelledby="summaryTitle">
+            <h2 id="summaryTitle">Your appointment</h2>
+            <dl>
+                <div><dt>Patient</dt><dd id="sumPatient" class="empty">Not entered yet</dd></div>
+                <div><dt>Department</dt><dd id="sumDepartment" class="empty">Not selected yet</dd></div>
+                <div><dt>Doctor</dt><dd id="sumDoctor" class="empty">Not selected yet</dd></div>
+                <div><dt>Date</dt><dd id="sumDate" class="empty">Not selected yet</dd></div>
+                <div><dt>Time</dt><dd id="sumTime" class="empty">Not selected yet</dd></div>
+                <div><dt>Reason</dt><dd id="sumReason" class="empty">Not selected yet</dd></div>
+            </dl>
+
+            <label class="consent">
+                <input type="checkbox" id="consent" form="bookingForm">
+                <span>I agree that the clinic may keep my details to manage this appointment.</span>
+            </label>
+            <span class="error" id="consent-error"></span>
+
+            <button type="submit" form="bookingForm" id="confirmBtn">Confirm booking</button>
+            <p class="policy">To cancel or reschedule, tell the clinic at least 24 hours before your appointment.</p>
+        </aside>
+
+    </main>
+
+    <section class="confirmation" id="confirmation" hidden>
+        <div class="check" aria-hidden="true">&#10003;</div>
+        <h2>Your appointment is booked</h2>
+        <p class="ref">Reference number <strong id="refNumber"></strong></p>
+
+        <dl class="confirm-details" id="confirmDetails"></dl>
+
+        <ul class="reminders">
+            <li>Arrive 10 to 15 minutes early.</li>
+            <li>Bring a valid ID and any previous medical records.</li>
+            <li>Need to change your booking? Contact the clinic at least 24 hours before.</li>
+        </ul>
+
+        <div class="actions">
+            <button type="button" id="bookAnother">Book another appointment</button>
+            <a class="ghost" href="CareSync.html">Back to Home</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>CareSync Community Clinic &middot; Open Monday to Saturday, 8am to 5pm</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+    <script src="booking.js"></script>
+</body>
+
+</html>

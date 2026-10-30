@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Appointments | CareSync Community Clinic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Appointments.css">
+</head>
+
+<body>
+
+    <header class="top">
+        <a class="back" href="CareSync.html">Back to Home</a>
+        <h1>My Appointments</h1>
+        <p>All the appointments you booked with your account.</p>
+    </header>
+
+    <main class="page">
+
+        <div class="toolbar">
+            <div class="tabs" role="tablist" aria-label="Filter appointments">
+                <button type="button" class="tab active" role="tab" data-filter="upcoming">Upcoming <span class="count" id="count-upcoming">0</span></button>
+                <button type="button" class="tab" role="tab" data-filter="past">Past <span class="count" id="count-past">0</span></button>
+                <button type="button" class="tab" role="tab" data-filter="cancelled">Cancelled <span class="count" id="count-cancelled">0</span></button>
+                <button type="button" class="tab" role="tab" data-filter="all">All <span class="count" id="count-all">0</span></button>
+            </div>
+            <div class="toolbar-actions">
+                <a class="book-btn" href="booking.html">Book an appointment</a>
+            </div>
+        </div>
+
+        <div id="list" class="list" aria-live="polite"></div>
+
+        <div id="empty" class="empty" hidden>
+            <h2 id="emptyTitle">No appointments yet</h2>
+            <p id="emptyText">When you book an appointment, it will show up here.</p>
+            <a class="book-btn" href="booking.html">Book an appointment</a>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>CareSync Community Clinic &middot; Open Monday to Saturday, 8am to 5pm</p>
+    </footer>
+
+    <dialog id="editDialog" class="dialog" aria-labelledby="editTitle">
+        <form id="editForm">
+            <h2 id="editTitle">Edit appointment</h2>
+
+            <div class="field-grid">
+                <div class="field">
+                    <label for="editPatient">Patient</label>
+                    <input type="text" id="editPatient" required>
+                </div>
+                <div class="field">
+                    <label for="editPatientType">Patient type</label>
+                    <input type="text" id="editPatientType">
+                </div>
+                <div class="field">
+                    <label for="editDoctor">Doctor</label>
+                    <input type="text" id="editDoctor" required>
+                </div>
+                <div class="field">
+                    <label for="editDepartment">Department</label>
+                    <input type="text" id="editDepartment">
+                </div>
+                <div class="field">
+                    <label for="editDate">Date</label>
+                    <input type="date" id="editDate" required>
+                </div>
+                <div class="field">
+                    <label for="editTime">Time</label>
+                    <input type="time" id="editTime" required>
+                </div>
+                <div class="field full">
+                    <label for="editReason">Reason</label>
+                    <input type="text" id="editReason">
+                </div>
+                <div class="field full">
+                    <label for="editNotes">Notes</label>
+                    <textarea id="editNotes" rows="3"></textarea>
+                </div>
+            </div>
+
+            <p class="form-error" id="editError" hidden></p>
+
+            <div class="dialog-actions">
+                <button type="button" id="editCancel">Close</button>
+                <button type="submit" class="primary">Save changes</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+    <script src="Appointments.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: whitesmoke;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+:root {
+    --section-pad-x: clamp(1rem, 5vw, 4rem);
+    --h1-size: clamp(1.9rem, 4.2vw, 3.2rem);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.wrapper {
+    background: linear-gradient(white, aquamarine);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 50vh;
+    padding-bottom: clamp(2rem, 2vw, 3rem);
+    border-bottom-right-radius: 100% 9rem;
+    border-bottom-left-radius: 100% 9rem;
+    box-shadow: 0 10px 30px rgba(93, 91, 91, 0.3);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(0.25rem, 1.5vw, 1.5rem);
+    width: min(1100px, 92%);
+    min-height: 4.5rem;
+    margin: clamp(1rem, 3vw, 2rem) auto;
+    padding: 0.5rem 0.6rem 0.5rem clamp(1rem, 3vw, 2.5rem);
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 30px rgba(93, 91, 91, 0.3);
+}
+
+nav ul {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+    font-weight: bold;
+}
+
+nav ul:hover {
+    color: rgb(25, 172, 172);
+    cursor: pointer;
+}
+
+nav a:not(.booking) {
+    margin: 0;
+    padding: 0.5rem clamp(0.4rem, 1.4vw, 1.5rem);
+    background: none;
+    box-shadow: none;
+    color: black;
+}
+
+nav a:not(.booking):hover {
+    color: rgb(25, 172, 172);
+}
+
+.booking {
+    flex-shrink: 0;
+    margin: 0;
+    padding: clamp(0.7rem, 1.4vw, 1.1rem) clamp(1rem, 2vw, 1.75rem);
+    border-radius: 999px;
+    background-color: #0f9d8a;
+    color: white;
+    font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: none;
+}
+
+.booking:hover {
+    background-color: #0b6f61;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: min(1100px, 92%);
+    padding: clamp(1rem, 4vw, 3rem) 0;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: var(--h1-size);
+    font-weight: bold;
+    line-height: 1.15;
+}
+
+.container p {
+    margin-top: 1rem;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    text-align: center;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1.25rem;
+    width: min(1100px, 92%);
+    margin: clamp(1.5rem, 4vw, 3rem) auto 0 auto;
+    padding: clamp(1rem, 2.5vw, 2rem);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.search label {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 180px;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: small;
+}
+
+.search select,
+.search input {
+    width: 100%;
+    padding: 0.8rem;
+    border: solid 1px lightgray;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 1rem;
+}
+
+.search button {
+    padding: 0.95rem 2rem;
+    border: none;
+    border-radius: 50px;
+    background-color: aqua;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search button:hover {
+    color: black;
+    background-color: rgba(0, 255, 255, 0.5);
+}
+
+.department {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 6vw, 5rem) var(--section-pad-x);
+}
+
+.department h1 {
+    margin: 0 0 clamp(1.5rem, 4vw, 3rem) 0;
+    font-size: var(--h1-size);
+    color: black;
+    text-align: center;
+}
+
+.department .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    width: 100%;
+}
+
+.department a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: min(300px, 100%);
+    margin: 0;
+    padding: 1.25rem;
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.department a:hover {
+    transform: translateY(-4px);
+}
+
+.department a img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(2rem, 6vw, 5rem) var(--section-pad-x) clamp(3rem, 8vw, 6rem);
+    background-color: rgba(127, 255, 212, 0.25);
+}
+
+.services h1 {
+    margin: 0 0 clamp(1.5rem, 4vw, 3rem) 0;
+    font-size: var(--h1-size);
+    text-align: center;
+}
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    width: 100%;
+}
+
+.service {
+    width: min(340px, 100%);
+    padding: 1rem;
+    border-radius: 24px;
+    background-color: white;
+    box-shadow: var(--shadow);
+}
+
+.service .pic {
+    aspect-ratio: 16 / 10;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, aquamarine, white);
+}
+
+.service .pic img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service h3 {
+    margin: 1rem 0.5rem 0.5rem 0.5rem;
+}
+
+.service p {
+    margin: 0 0.5rem 0.5rem 0.5rem;
+    font-size: small;
+    line-height: 1.5;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(2rem, 6vw, 5rem) var(--section-pad-x) clamp(3rem, 8vw, 6rem);
+}
+
+.contact h1 {
+    margin: 0 0 clamp(1.5rem, 4vw, 3rem) 0;
+    font-size: var(--h1-size);
+    text-align: center;
+}
+
+.contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    width: 100%;
+}
+
+.contact-card {
+    width: min(300px, 100%);
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.contact-card img {
+    display: block;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1rem auto;
+    object-fit: contain;
+}
+
+.contact-card h3 {
+    margin-bottom: 0.75rem;
+}
+
+.contact-card p {
+    font-size: small;
+    line-height: 1.6;
+}
+
+.footer {
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: small;
+    background: linear-gradient(aquamarine, white 150px);
+}
+
+.menu-head {
+    display: flex;
+    align-items: center;
+    height: 110px;
+    padding-left: clamp(1rem, 4vw, 70px);
+    flex-shrink: 0;
+}
+
+.menu-head img {
+    display: block;
+    max-width: 180px;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+@media (max-width: 800px) {
+    .search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search label {
+        flex: none;
+    }
+}
+
+@media (max-width: 700px) {
+    nav {
+        justify-content: center;
+        padding: 0.75rem;
+        border-radius: 28px;
+    }
+
+    nav ul {
+        flex: 1 1 100%;
+        flex-wrap: wrap;
+    }
+
+    .booking {
+        width: 100%;
+        margin: 0.25rem 0 0 0;
+        text-align: center;
+    }
+
+    .wrapper {
+        border-bottom-right-radius: 100% 2rem;
+        border-bottom-left-radius: 100% 2rem;
+    }
+}
